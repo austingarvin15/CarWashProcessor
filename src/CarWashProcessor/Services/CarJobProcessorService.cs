@@ -8,19 +8,24 @@ public class CarJobProcessorService
 
 	public CarJobProcessorService(CarJobServiceFactory carJobServiceFactory)
 	{
-		// Set services
 		_carJobServiceFactory = carJobServiceFactory;
 	}
 
 	public async Task ProcessCarJobAsync(CarJob carJob)
 	{
-		//Get the apropriate injected service for the chosen wash type
-		var _washService = _carJobServiceFactory.GetWashService(carJob.ServiceWash);
-
-		await _washService.PerformWash(carJob);
+		await PerformMainWash(carJob);
 
 		await PerformAddOnServices(carJob);
 	}
+
+	private async Task PerformMainWash(CarJob carJob)
+	{
+        //Get the apropriate injected service for the chosen main wash type
+        var _washService = _carJobServiceFactory.GetWashService(carJob.ServiceWash);
+
+        await _washService.PerformMainWash(carJob);
+    }
+
 
 	private async Task PerformAddOnServices(CarJob carJob)
 	{
@@ -33,6 +38,4 @@ public class CarJobProcessorService
             await _addOnService.PerformAddOnService(carJob);
         }
     }
-
-
 }

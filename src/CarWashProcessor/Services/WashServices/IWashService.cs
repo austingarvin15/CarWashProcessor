@@ -5,7 +5,7 @@ namespace CarWashProcessor.Services.ServiceWashes
 {
     public interface IWashService
     {
-        public Task PerformWash(CarJob carJob);
+        public Task PerformMainWash(CarJob carJob);
 
     }
 }

@@ -12,7 +12,7 @@ public class BasicWashService : IWashService
 		_logger = logger;
 	}
 
-	public async Task PerformWash(CarJob carJob)
+	public async Task PerformMainWash(CarJob carJob)
 	{
 		// Wait a second
 		await Task.Delay(TimeSpan.FromSeconds(1));

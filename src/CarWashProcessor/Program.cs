@@ -1,4 +1,7 @@
+using CarWashProcessor.Models;
 using CarWashProcessor.Services;
+using CarWashProcessor.Services.ServiceAddOns;
+using CarWashProcessor.Services.ServiceWashes;
 
 namespace CarWashProcessor;
 
@@ -23,11 +26,17 @@ public class Program
 	{
 		// Register services
 		services.AddSingleton<CarJobProcessorService>();
-		services.AddSingleton<BasicWashService>();
-		services.AddSingleton<AwesomeWashService>();
-		services.AddSingleton<ToTheMaxWashService>();
-		services.AddSingleton<TireShineService>();
-		services.AddSingleton<InteriorCleanService>();
-		services.AddSingleton<HandWaxAndShineService>();
-	}
+        services.AddSingleton<CarJobServiceFactory>();
+
+        //Register car wash and add on implementations with the related key from the EServiceAddOn or EServiceWash enum
+        //Services can be retrieved and injected with the related key
+        services.AddKeyedSingleton<IWashService, BasicWashService>(nameof(EServiceWash.Basic));
+        services.AddKeyedSingleton<IWashService, AwesomeWashService>(nameof(EServiceWash.Awesome));
+        services.AddKeyedSingleton<IWashService, ToTheMaxWashService>(nameof(EServiceWash.ToTheMax));
+
+        services.AddKeyedSingleton<IAddOnService, HandWaxAndShineService>(nameof(EServiceAddon.HandWaxAndShine));
+        services.AddKeyedSingleton<IAddOnService, TireShineService>(nameof(EServiceAddon.TireShine));
+        services.AddKeyedSingleton<IAddOnService, InteriorCleanService>(nameof(EServiceAddon.InteriorClean));
+
+    }
 }

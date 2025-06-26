@@ -1,8 +1,8 @@
 ﻿using CarWashProcessor.Models;
 
-namespace CarWashProcessor.Services;
+namespace CarWashProcessor.Services.ServiceWashes;
 
-public class AwesomeWashService
+public class AwesomeWashService: IWashService
 {
 	private readonly ILogger<AwesomeWashService> _logger;
 
@@ -12,7 +12,7 @@ public class AwesomeWashService
 		_logger = logger;
 	}
 
-	public async Task DoAwesomeWashAsync(CarJob carJob)
+	public async Task PerformWash(CarJob carJob)
 	{
 		// Wait a second
 		await Task.Delay(TimeSpan.FromSeconds(1));

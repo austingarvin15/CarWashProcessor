@@ -1,8 +1,8 @@
 ﻿using CarWashProcessor.Models;
 
-namespace CarWashProcessor.Services;
+namespace CarWashProcessor.Services.ServiceAddOns;
 
-public class HandWaxAndShineService
+public class HandWaxAndShineService: IAddOnService
 {
 	private readonly ILogger<HandWaxAndShineService> _logger;
 
@@ -12,7 +12,7 @@ public class HandWaxAndShineService
 		_logger = logger;
 	}
 
-	public async Task HandWaxAndShineAsync(CarJob carJob)
+	public async Task PerformAddOnService(CarJob carJob)
 	{
 		// Wait a second
 		await Task.Delay(TimeSpan.FromSeconds(1));

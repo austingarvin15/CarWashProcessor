@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace CarWashProcessor.Services
 {
-    public class CarJobServiceFactory
+    public class CarJobServiceFactory: ICarJobServiceFactory
     {
         private readonly IServiceProvider _serviceProvider;
 

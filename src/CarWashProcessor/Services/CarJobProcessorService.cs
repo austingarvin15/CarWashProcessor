@@ -4,9 +4,9 @@ namespace CarWashProcessor.Services;
 
 public class CarJobProcessorService
 {
-	private readonly CarJobServiceFactory _carJobServiceFactory;
+	private readonly ICarJobServiceFactory _carJobServiceFactory;
 
-	public CarJobProcessorService(CarJobServiceFactory carJobServiceFactory)
+	public CarJobProcessorService(ICarJobServiceFactory carJobServiceFactory)
 	{
 		_carJobServiceFactory = carJobServiceFactory;
 	}

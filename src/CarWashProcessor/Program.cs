@@ -26,7 +26,7 @@ public class Program
 	{
 		// Register services
 		services.AddSingleton<CarJobProcessorService>();
-        services.AddSingleton<CarJobServiceFactory>();
+        services.AddSingleton<ICarJobServiceFactory, CarJobServiceFactory>();
 
         //Register car wash and add on implementations with the related key from the EServiceAddOn or EServiceWash enums
         //Services can be retrieved with the related key

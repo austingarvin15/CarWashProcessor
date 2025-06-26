@@ -1,7 +1,7 @@
 ﻿using CarWashProcessor.Models;
 
 
-namespace CarWashProcessor.Services.ServiceAddOns
+namespace CarWashProcessor.Services.AddOnServices
 {
     public interface IAddOnService
     {

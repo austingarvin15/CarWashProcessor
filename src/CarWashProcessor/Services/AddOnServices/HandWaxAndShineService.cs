@@ -1,6 +1,6 @@
 ﻿using CarWashProcessor.Models;
 
-namespace CarWashProcessor.Services.ServiceAddOns;
+namespace CarWashProcessor.Services.AddOnServices;
 
 public class HandWaxAndShineService: IAddOnService
 {
@@ -14,9 +14,14 @@ public class HandWaxAndShineService: IAddOnService
 
 	public async Task PerformAddOnService(CarJob carJob)
 	{
-		// Wait a second
-		await Task.Delay(TimeSpan.FromSeconds(1));
-		// Log information
-		_logger.LogInformation("--> Hand waxed and shined for customer {}!", carJob.CustomerId);
+		await PerformHandWaxAndShine(carJob);
 	}
+
+    public async Task PerformHandWaxAndShine(CarJob carJob)
+    {
+        // Wait a second
+        await Task.Delay(TimeSpan.FromSeconds(1));
+        // Log information
+        _logger.LogInformation("--> Hand waxed and shined for customer {}!", carJob.CustomerId);
+    }
 }

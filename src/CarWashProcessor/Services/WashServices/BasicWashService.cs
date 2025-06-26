@@ -1,6 +1,6 @@
 ﻿using CarWashProcessor.Models;
 
-namespace CarWashProcessor.Services.ServiceWashes;
+namespace CarWashProcessor.Services.WashServices;
 
 public class BasicWashService : IWashService
 {
@@ -12,11 +12,16 @@ public class BasicWashService : IWashService
 		_logger = logger;
 	}
 
-	public async Task PerformMainWash(CarJob carJob)
+	public async Task PerformWash(CarJob carJob)
 	{
-		// Wait a second
-		await Task.Delay(TimeSpan.FromSeconds(1));
-		// Log information
-		_logger.LogInformation("--> Basic wash performed for customer {}!", carJob.CustomerId);
+		await PerformBasicWash(carJob);
 	}
+
+    public async Task PerformBasicWash(CarJob carJob)
+    {
+        // Wait a second
+        await Task.Delay(TimeSpan.FromSeconds(1));
+        // Log information
+        _logger.LogInformation("--> Basic wash performed for customer {}!", carJob.CustomerId);
+    }
 }

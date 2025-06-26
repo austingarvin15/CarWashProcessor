@@ -23,7 +23,7 @@ public class CarJobProcessorService
         //Get the apropriate injected service for the chosen main wash type
         var _washService = _carJobServiceFactory.GetWashService(carJob.ServiceWash);
 
-        await _washService.PerformMainWash(carJob);
+        await _washService.PerformWash(carJob);
     }
 
 

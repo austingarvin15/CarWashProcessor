@@ -1,11 +1,11 @@
 ﻿using CarWashProcessor.Models;
 
 
-namespace CarWashProcessor.Services.ServiceWashes
+namespace CarWashProcessor.Services.WashServices
 {
     public interface IWashService
     {
-        public Task PerformMainWash(CarJob carJob);
+        public Task PerformWash(CarJob carJob);
 
     }
 }

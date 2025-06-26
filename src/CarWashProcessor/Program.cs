@@ -1,7 +1,7 @@
 using CarWashProcessor.Models;
 using CarWashProcessor.Services;
-using CarWashProcessor.Services.ServiceAddOns;
-using CarWashProcessor.Services.ServiceWashes;
+using CarWashProcessor.Services.AddOnServices;
+using CarWashProcessor.Services.WashServices;
 
 namespace CarWashProcessor;
 
@@ -28,8 +28,8 @@ public class Program
 		services.AddSingleton<CarJobProcessorService>();
         services.AddSingleton<CarJobServiceFactory>();
 
-        //Register car wash and add on implementations with the related key from the EServiceAddOn or EServiceWash enum
-        //Services can be retrieved and injected with the related key
+        //Register car wash and add on implementations with the related key from the EServiceAddOn or EServiceWash enums
+        //Services can be retrieved with the related key
         services.AddKeyedSingleton<IWashService, BasicWashService>(nameof(EServiceWash.Basic));
         services.AddKeyedSingleton<IWashService, AwesomeWashService>(nameof(EServiceWash.Awesome));
         services.AddKeyedSingleton<IWashService, ToTheMaxWashService>(nameof(EServiceWash.ToTheMax));

@@ -1,6 +1,6 @@
 ﻿using CarWashProcessor.Models;
-using CarWashProcessor.Services.ServiceAddOns;
-using CarWashProcessor.Services.ServiceWashes;
+using CarWashProcessor.Services.AddOnServices;
+using CarWashProcessor.Services.WashServices;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -19,8 +19,10 @@ namespace CarWashProcessor.Services
         }
         public IAddOnService GetAddOnService(EServiceAddon serviceAddOn)
         {
-            //Specific implementations of IAddOnService are registered in Program.cs with related EServiceAddOn value
-            var _addOnService = _serviceProvider.GetKeyedService<IAddOnService>(nameof(serviceAddOn));
+           //Specific implementations of IAddOnService are registered in Program.cs with related EServiceAddOn value as the key
+           var serviceKey = serviceAddOn.ToString();
+
+           var _addOnService = _serviceProvider.GetKeyedService<IAddOnService>(serviceKey);
 
            if (_addOnService == null) {
 
@@ -34,8 +36,10 @@ namespace CarWashProcessor.Services
 
         public IWashService GetWashService(EServiceWash serviceWash)
         {
-            //Specific implementations of IWashService are registered in Program.cs with related EServiceWash value
-            var _washService = _serviceProvider.GetKeyedService<IWashService>(nameof(serviceWash));
+            //Specific implementations of IWashService are registered in Program.cs with related EServiceWash value as the key
+            var serviceKey = serviceWash.ToString();
+
+            var _washService = _serviceProvider.GetKeyedService<IWashService>(serviceKey);
 
             if (_washService == null) {
                 throw new InvalidOperationException(
